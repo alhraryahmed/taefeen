@@ -1,0 +1,150 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-07-25 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "full_name",
+  "registration_type",
+  "column_break_1",
+  "national_id_passport",
+  "nationality",
+  "section_break_1",
+  "phone",
+  "email",
+  "column_break_2",
+  "head_of_family",
+  "section_break_family",
+  "family_members",
+  "section_break_docs",
+  "documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "PILG-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "اسم المعتمر الكامل",
+   "reqd": 1
+  },
+  {
+   "fieldname": "registration_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "نوع التسجيل",
+   "options": "Individual\nFamily",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "national_id_passport",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "رقم الجواز / الهوية"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Link",
+   "label": "الجنسية",
+   "options": "Country"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "بيانات التواصل"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "رقم الهاتف",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "البريد الإلكتروني",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.registration_type=='Family'",
+   "fieldname": "head_of_family",
+   "fieldtype": "Link",
+   "label": "ولي الأمر / رب الأسرة",
+   "options": "Pilgrim"
+  },
+  {
+   "depends_on": "eval:doc.registration_type=='Family'",
+   "fieldname": "section_break_family",
+   "fieldtype": "Section Break",
+   "label": "أفراد العائلة"
+  },
+  {
+   "fieldname": "family_members",
+   "fieldtype": "Table",
+   "label": "أفراد العائلة",
+   "options": "Family Member"
+  },
+  {
+   "fieldname": "section_break_docs",
+   "fieldtype": "Section Break",
+   "label": "الوثائق والمرفقات"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "label": "الوثائق",
+   "options": "Pilgrim Document"
+  }
+ ],
+ "links": [],
+ "module": "Hajj and Umrah",
+ "name": "Pilgrim",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hajj Umrah Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "full_name"
+}

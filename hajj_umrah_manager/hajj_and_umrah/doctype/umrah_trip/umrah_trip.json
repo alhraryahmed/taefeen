@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-07-25 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "trip_name",
+  "trip_type",
+  "status",
+  "column_break_1",
+  "departure_date",
+  "return_date",
+  "seats_capacity",
+  "section_break_1",
+  "airline",
+  "flight_notes",
+  "column_break_2",
+  "makkah_hotel",
+  "madinah_hotel",
+  "section_break_stats",
+  "total_pilgrims",
+  "column_break_stats",
+  "total_expenses_all",
+  "total_revenue_all",
+  "column_break_stats2",
+  "total_profit_all",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "TRIP-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trip_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "اسم الرحلة / الفوج",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trip_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "نوع الرحلة",
+   "options": "Umrah\nHajj",
+   "default": "Umrah"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "الحالة",
+   "options": "Planned\nOpen for Booking\nIn Progress\nCompleted\nCancelled",
+   "default": "Planned"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "departure_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "تاريخ السفر"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "تاريخ العودة"
+  },
+  {
+   "fieldname": "seats_capacity",
+   "fieldtype": "Int",
+   "label": "السعة (عدد المقاعد)"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "تفاصيل السفر والسكن"
+  },
+  {
+   "fieldname": "airline",
+   "fieldtype": "Data",
+   "label": "شركة الطيران"
+  },
+  {
+   "fieldname": "flight_notes",
+   "fieldtype": "Small Text",
+   "label": "ملاحظات الرحلة الجوية"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "makkah_hotel",
+   "fieldtype": "Data",
+   "label": "فندق مكة"
+  },
+  {
+   "fieldname": "madinah_hotel",
+   "fieldtype": "Data",
+   "label": "فندق المدينة"
+  },
+  {
+   "fieldname": "section_break_stats",
+   "fieldtype": "Section Break",
+   "label": "ملخص مالي (محسوب تلقائياً من حجوزات المعتمرين)"
+  },
+  {
+   "fieldname": "total_pilgrims",
+   "fieldtype": "Int",
+   "label": "عدد المعتمرين المسجلين",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_expenses_all",
+   "fieldtype": "Currency",
+   "label": "إجمالي المصاريف",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_revenue_all",
+   "fieldtype": "Currency",
+   "label": "إجمالي الإيرادات (قيمة العمرات)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_stats2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_profit_all",
+   "fieldtype": "Currency",
+   "label": "إجمالي الربح المتوقع",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "ملاحظات"
+  }
+ ],
+ "links": [],
+ "module": "Hajj and Umrah",
+ "name": "Umrah Trip",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hajj Umrah Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "trip_name"
+}

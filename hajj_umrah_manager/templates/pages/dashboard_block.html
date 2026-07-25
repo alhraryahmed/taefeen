@@ -1,0 +1,49 @@
+<!--
+  بلوك داشبورد شركة الطائفين لخدمات الحج والعمرة
+  طريقة الاستخدام: افتح Workspace -> Edit -> أضف "Custom Block" (أو "HTML Block")
+  والصق محتوى هذا الملف بالكامل داخله، ثم احفظ.
+  يعتمد على ملف CSS المضمّن تلقائياً مع التطبيق (hajj_umrah_dashboard.css)
+  ويجلب البيانات الحيّة عبر hajj_umrah_manager.api.get_dashboard_stats
+-->
+<div class="hu-dashboard-grid" id="hu-dashboard-root">
+	<div class="hu-kpi-card">
+		<div class="hu-kpi-title">عدد المعتمرين</div>
+		<div class="hu-kpi-value" id="hu-total-pilgrims">—</div>
+	</div>
+	<div class="hu-kpi-card">
+		<div class="hu-kpi-title">عدد الرحلات الحالية</div>
+		<div class="hu-kpi-value" id="hu-total-trips">—</div>
+	</div>
+	<div class="hu-kpi-card gold-accent">
+		<div class="hu-kpi-title">رصيد الخزينة الحالي</div>
+		<div class="hu-kpi-value gold" id="hu-treasury-balance">—</div>
+	</div>
+	<div class="hu-kpi-card">
+		<div class="hu-kpi-title">إجمالي الأرباح</div>
+		<div class="hu-kpi-value" id="hu-total-profit">—</div>
+	</div>
+	<div class="hu-kpi-card">
+		<div class="hu-kpi-title">إجمالي المدفوع / المحصل</div>
+		<div class="hu-kpi-value" id="hu-total-collected">—</div>
+	</div>
+</div>
+
+<script>
+	(function () {
+		function fmt(n) {
+			return frappe.format(n, { fieldtype: "Currency" });
+		}
+		frappe.call({
+			method: "hajj_umrah_manager.api.get_dashboard_stats",
+			callback: function (r) {
+				if (!r.message) return;
+				var d = r.message;
+				document.getElementById("hu-total-pilgrims").innerText = d.total_pilgrims;
+				document.getElementById("hu-total-trips").innerText = d.total_trips;
+				document.getElementById("hu-treasury-balance").innerText = fmt(d.current_treasury_balance);
+				document.getElementById("hu-total-profit").innerText = fmt(d.total_profit);
+				document.getElementById("hu-total-collected").innerText = fmt(d.total_collected);
+			},
+		});
+	})();
+</script>

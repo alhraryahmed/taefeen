@@ -1,0 +1,2 @@
+recursive-include hajj_umrah_manager *.json *.md *.txt *.html *.css *.js *.py
+recursive-exclude hajj_umrah_manager *.pyc

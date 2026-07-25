@@ -1,0 +1,259 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-07-25 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "is_submittable": 1,
+ "field_order": [
+  "naming_series",
+  "pilgrim",
+  "pilgrim_name",
+  "umrah_trip",
+  "column_break_0",
+  "booking_date",
+  "payment_type",
+  "status",
+  "section_break_costs",
+  "visa_cost",
+  "ticket_cost",
+  "makkah_housing_cost",
+  "column_break_costs",
+  "madinah_housing_cost",
+  "transport_cost",
+  "total_expenses",
+  "section_break_revenue",
+  "payment_currency",
+  "exchange_rate",
+  "umrah_price",
+  "total_paid",
+  "column_break_revenue",
+  "base_umrah_price",
+  "balance_amount",
+  "total_profit",
+  "section_break_installments",
+  "installment_plan",
+  "section_break_notes",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "BOOK-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pilgrim",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "المعتمر",
+   "options": "Pilgrim",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "pilgrim.full_name",
+   "fieldname": "pilgrim_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "اسم المعتمر",
+   "read_only": 1
+  },
+  {
+   "fieldname": "umrah_trip",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "الرحلة / الفوج",
+   "options": "Umrah Trip"
+  },
+  {
+   "fieldname": "column_break_0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "booking_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "تاريخ الحجز"
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "نوع الدفع",
+   "options": "Cash\nInstallments\nBank Transfer",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "حالة الحجز",
+   "options": "Draft\nConfirmed\nCompleted\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_costs",
+   "fieldtype": "Section Break",
+   "label": "جدول المصاريف والتكاليف"
+  },
+  {
+   "fieldname": "visa_cost",
+   "fieldtype": "Currency",
+   "label": "تكلفة التأشيرة"
+  },
+  {
+   "fieldname": "ticket_cost",
+   "fieldtype": "Currency",
+   "label": "تكلفة التذكرة"
+  },
+  {
+   "fieldname": "makkah_housing_cost",
+   "fieldtype": "Currency",
+   "label": "سكن مكة"
+  },
+  {
+   "fieldname": "column_break_costs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "madinah_housing_cost",
+   "fieldtype": "Currency",
+   "label": "سكن المدينة"
+  },
+  {
+   "fieldname": "transport_cost",
+   "fieldtype": "Currency",
+   "label": "النقل"
+  },
+  {
+   "fieldname": "total_expenses",
+   "fieldtype": "Currency",
+   "label": "مجموع المصاريف",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "section_break_revenue",
+   "fieldtype": "Section Break",
+   "label": "جدول الربحية والقيمة"
+  },
+  {
+   "default": "DZD",
+   "fieldname": "payment_currency",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "عملة الدفع",
+   "options": "DZD\nSAR\nUSD\nEUR"
+  },
+  {
+   "default": "1.0",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "سعر الصرف"
+  },
+  {
+   "fieldname": "umrah_price",
+   "fieldtype": "Currency",
+   "label": "قيمة العمرة الإجمالية",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_paid",
+   "fieldtype": "Currency",
+   "label": "إجمالي المدفوع"
+  },
+  {
+   "fieldname": "column_break_revenue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "base_umrah_price",
+   "fieldtype": "Currency",
+   "label": "القيمة بالعملة المحلية",
+   "read_only": 1
+  },
+  {
+   "fieldname": "balance_amount",
+   "fieldtype": "Currency",
+   "label": "المتبقي",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "total_profit",
+   "fieldtype": "Currency",
+   "label": "إجمالي المكسب",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "depends_on": "eval:doc.payment_type=='Installments'",
+   "fieldname": "section_break_installments",
+   "fieldtype": "Section Break",
+   "label": "جدول الأقساط (10 أشهر)"
+  },
+  {
+   "depends_on": "eval:doc.payment_type=='Installments'",
+   "fieldname": "installment_plan",
+   "fieldtype": "Table",
+   "label": "خطة الأقساط",
+   "options": "Installment Schedule Row"
+  },
+  {
+   "fieldname": "section_break_notes",
+   "fieldtype": "Section Break",
+   "label": "ملاحظات"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "ملاحظات"
+  }
+ ],
+ "links": [],
+ "module": "Hajj and Umrah",
+ "name": "Umrah Booking",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Hajj Umrah Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "pilgrim_name"
+}

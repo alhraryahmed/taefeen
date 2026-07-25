@@ -1,0 +1,43 @@
+/* Al-Taefeen Hajj & Umrah - Green & Gold Dashboard Theme */
+
+.hu-dashboard-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 16px;
+	direction: rtl;
+	font-family: "Cairo", "Inter", sans-serif;
+	margin: 10px 0;
+}
+
+.hu-kpi-card {
+	background: #ffffff;
+	border-radius: 12px;
+	padding: 20px;
+	border-top: 4px solid #0a5c36;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+	transition: transform 0.2s ease;
+}
+
+.hu-kpi-card:hover {
+	transform: translateY(-3px);
+}
+
+.hu-kpi-card.gold-accent {
+	border-top-color: #d4af37;
+}
+
+.hu-kpi-title {
+	font-size: 0.85rem;
+	color: #6c757d;
+	margin-bottom: 8px;
+}
+
+.hu-kpi-value {
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #0a5c36;
+}
+
+.hu-kpi-value.gold {
+	color: #b8901f;
+}
